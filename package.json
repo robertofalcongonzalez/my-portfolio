@@ -2,12 +2,13 @@
   "name": "my-portfolio",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
   "dependencies": {
     "@headlessui/vue": "^1.4.1",
+    "@heroicons/vue": "^1.0.4",
     "vue": "^3.2.16"
   },
   "devDependencies": {

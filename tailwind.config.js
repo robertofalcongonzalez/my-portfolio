@@ -5,7 +5,12 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['active'],
+      textColor: ['active'],
+      opacity: ['disabled'],
+      borderWidth: ['hover', 'active']
+    },
   },
   plugins: [],
 }
