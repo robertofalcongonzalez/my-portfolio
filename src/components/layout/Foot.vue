@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 </script>
 
 <template>
-  <div class="text-center align-bottom py-2 text-white bottom-0 bg-black">
-    -----{{ new Date() }}-----
-  </div>
+  <footer class="text-center align-bottom py-2 text-white w-full bottom-0 bg-black">
+    -----Social Networks-----
+  </footer>
 </template>
 
 <style scoped>

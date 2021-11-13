@@ -1,20 +1,43 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+<script lang="ts" setup>
 import Layout from "./components/layout/Layout.vue";
+import BaseSection from "./components/layout/BaseSection.vue";
+import {useLanguages} from "./composables/useLanguage";
+import {provide, ref} from "vue";
+import {DownloadIcon, TrashIcon} from "@heroicons/vue/solid"
+
+const {$t, setLanguage, lang} = useLanguages()
+const showDownload = ref(true)
+//TODO: Check if this is the event fired when reload
+document.addEventListener('readystatechange', () => {
+  setLanguage(localStorage.getItem('lang') || 'es');
+})
+provide('translate', $t);
 </script>
 
 <template>
   <Layout>
     <template v-slot:default>
-      <main>
-        <div style="height: 200vh;"></div>
-        <section>
-          <div class="sticky top-0 shadow-md h-16" id="abilities"></div>
-        </section>
-        <section></section>
-        <section></section>
-      </main>
+      <BaseSection :title="$t('downloadCV')" v-if="showDownload"
+                   :title-class="['flex justify-start items-center border-4 border-red-400 border-dashed']"
+      >
+        <template v-slot:title>
+          <button class="animate-bounce">
+            <DownloadIcon class="h-12 text-red-300"></DownloadIcon>
+          </button>
+          <div class="flex-grow"></div>
+          <TrashIcon class="h-12 text-red-300" @click="showDownload = false"></TrashIcon>
+        </template>
+      </BaseSection>
+      <BaseSection class="shadow-sm mt-2"
+                   :title="$t('firstSectionTitle')"
+                   :title-class="['sticky h-16 flex shadow-sm items-center justify-start border']"
+      >
+        <template v-slot:content>
+
+        </template>
+      </BaseSection>
+      <section></section>
+      <section></section>
     </template>
   </Layout>
 </template>

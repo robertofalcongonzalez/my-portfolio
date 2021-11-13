@@ -1,9 +1,4 @@
-<script setup lang="ts">import { ref } from '@vue/reactivity';
-import constants from '../../constants';
-
-
-
-</script>
+<script lang="ts" setup>import constants from '../../constants';</script>
 
 <template>
   <div class="md:banner smallBanner flex justify-center items-center">
@@ -16,8 +11,8 @@ import constants from '../../constants';
       >{{ constants.es.bannerTextAuthor }}</h2>
     </div>
   </div>
-  
+
 </template>
 
 <style scoped>
-</style> 
+</style>

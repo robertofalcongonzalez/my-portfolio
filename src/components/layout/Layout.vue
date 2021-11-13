@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import Top from "./Top.vue";
 import Foot from "./Foot.vue";
@@ -9,7 +9,7 @@ import Bar from "../base/Bar.vue";
   <top></top>
   <bar></bar>
   <main>
-    <slot></slot>
+    <slot name="default"></slot>
   </main>
   <foot></foot>
 </template>

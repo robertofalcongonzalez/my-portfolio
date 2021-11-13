@@ -1,9 +1,9 @@
-<script setup lang="ts">
-defineProps<{name: string, color: string}>()
+<script lang="ts" setup>
+defineProps<{ name: string, color: string }>()
 </script>
 
 <template>
-<button class="btn btn-purple" >{{name}}</button>
+  <button class="btn btn-purple">{{ name }}</button>
 </template>
 
 <style scoped>
