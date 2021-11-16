@@ -24,7 +24,7 @@ const menus = {
         />
       </div>
     </header>
-    <header class=" md:sticky md:top-0 bg-white shadow-md h-0 md:h-12 flex items-center invisible md:visible">
+    <header class=" md:sticky md:top-0 bg-white shadow-md h-0 md:h-16 flex items-center invisible md:visible">
       <div class="justify-self-end">
         <img
           alt="Selfie"
