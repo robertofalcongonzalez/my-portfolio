@@ -1,17 +1,22 @@
 <script lang="ts" setup>
 
-import Top from "./Top.vue";
 import Foot from "./Foot.vue";
 import Bar from "../base/Bar.vue";
-</script>
+import {useLayout} from "../../composables/useLayout";
 
+const {setClientWidth} = useLayout()
+
+
+
+</script>
 <template>
-  <top></top>
-  <bar></bar>
-  <main>
-    <slot name="default"></slot>
-  </main>
-  <foot></foot>
+  <div class="bg-primary min-h-screen " v-resize="setClientWidth" id="app-sheet">
+    <bar></bar>
+    <main>
+      <slot name="default"></slot>
+    </main>
+    <foot></foot>
+  </div>
 </template>
 
 <style scoped>

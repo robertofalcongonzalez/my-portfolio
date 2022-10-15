@@ -13,8 +13,8 @@
 
   @variants responsive {
     .banner {
-      height: calc(100vh - 64px);
-      background: url(./assets/banner.jpg) right 50% top 80% / cover no-repeat border-box;
+      height: calc(100vh - 300px);
+      background: url(./assets/banner.jpg) right 50% top 60% / cover no-repeat border-box;
     }
 
     .smallBanner {

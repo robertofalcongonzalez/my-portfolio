@@ -1,11 +1,11 @@
-import {createRouter, createWebHashHistory, RouteParams} from 'vue-router'
+import {createRouter, createWebHistory, RouteParams} from 'vue-router'
 import Home from './pages/Home.vue';
 export type AppRouteNames = 'main'
   | 'my-feed'
 
 
 export const router = createRouter({
-  history: createWebHashHistory('/my-portfolio'),
+  history: createWebHistory('/my-portfolio'),
   routes: [
     {
       name: 'main',
