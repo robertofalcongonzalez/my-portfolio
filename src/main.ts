@@ -2,7 +2,7 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import './index.css'
 import {router} from "./router";
-import {VResize} from "./composables/utils";
+import {VResize} from "./directives/resize";
 
 const app = createApp(App);
 app.use(router)

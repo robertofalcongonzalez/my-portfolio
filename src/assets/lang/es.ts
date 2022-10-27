@@ -1,6 +1,6 @@
 export default {
   "aboutText": "Soy un desarrollador fullstack principalmente enfocado en frontend, con 3 años de experiencia con VueJS y ecosistema y 1 año de experiencia en backend",
-  "professionalTitle": "Ingeniero Informático, Desarrollador Fullstack",
+  "professionalTitle": "Desarrollador Fullstack",
   "firstSectionTitle": "Habilidades",
   "myPortfolio": "Mi Portafolios",
   "downloadCV": "Descarga mi CV aquí",

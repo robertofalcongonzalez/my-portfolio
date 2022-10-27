@@ -2,6 +2,7 @@
 import {useLayout} from "../../composables/useLayout";
 import {MenuIcon} from "@heroicons/vue/solid"
 import {inject} from "vue";
+import {tK} from "../../constants";
 
 const {changeMenuStatus, breakpoint} = useLayout();
 const menus = [
@@ -10,7 +11,7 @@ const menus = [
   {key: 'about', linkTo: 'about', tag: 'router-link'},
 
 ]
-const $t = inject('translate')
+const $t = inject(tK)
 </script>
 
 <template>

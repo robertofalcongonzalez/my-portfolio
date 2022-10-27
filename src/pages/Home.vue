@@ -4,8 +4,11 @@ import BaseSection from "../components/layout/BaseSection.vue";
 import {inject} from "vue";
 import Skills from "../components/Skills.vue";
 import GithubProfile from "../components/GithubProfile.vue";
-const $t = inject('translate')
-const lang = inject('lang')
+import {tK} from "../constants";
+import {useLanguages} from "../composables/useLanguage";
+
+const $t = inject(tK)
+const {lang} = useLanguages();
 </script>
 <template>
   <BaseSection>
@@ -43,7 +46,6 @@ const lang = inject('lang')
       </a>
     </template>
     <template v-slot:content>
-
       <Skills></Skills>
     </template>
   </BaseSection>

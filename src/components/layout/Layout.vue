@@ -10,7 +10,7 @@ const {setClientWidth} = useLayout()
 
 </script>
 <template>
-  <div class="bg-primary min-h-screen " v-resize="setClientWidth" id="app-sheet">
+  <div class="bg-primary min-h-screen" v-resize="setClientWidth" id="app-sheet">
     <bar></bar>
     <main>
       <slot name="default"></slot>

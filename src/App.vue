@@ -1,15 +1,18 @@
 <script lang="ts" setup>
 import Layout from "./components/layout/Layout.vue";
 import {useLanguages} from "./composables/useLanguage";
-import {provide} from "vue";
+import {onMounted, provide} from "vue";
+import {tK} from "./constants";
 
-const {$t, setLanguage, lang, injectionKey} = useLanguages()
+const {setLanguage, translate, lang} = useLanguages()
 //TODO: Check if this is the event fired when reload
-document.addEventListener('readystatechange', () => {
-  setLanguage(localStorage.getItem('lang') || 'es');
+onMounted(() => {
+  const lsLang = localStorage.getItem('lang');
+  if (lsLang) {
+    setLanguage(lsLang);
+  }
 })
-provide('translate', $t);
-provide('lang', lang);
+provide(tK, translate);
 </script>
 
 <template>

@@ -2,6 +2,7 @@
 import Spinner from "./Spinner.vue";
 import {computed, inject,} from "vue";
 import {useLayout} from "../../composables/useLayout";
+import {tK} from "../../constants";
 const props = defineProps({
   radius: {type: Number, required: true},
   percent: {type: Number, required: true},
@@ -14,7 +15,7 @@ const props = defineProps({
   skillExperience: String,
   skillVersion: String,
 });
-const $t = inject('translate')
+const $t = inject(tK)
 const {breakpoint} = useLayout()
 const responsiveRadius = computed(() => breakpoint.value !== 'sm' ? props.radius : props.radius / 2)
 const svgSize = computed(() => responsiveRadius.value * 2 + props.strokeWidth + (props.strokeWidth / Math.PI))

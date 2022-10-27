@@ -1,6 +1,6 @@
 export default {
   "aboutText": "I'm a fullstack developer focused on frontend, with 3 years of experience with VueJs and its ecosystem, and 1 year with backend",
-  "professionalTitle": "Software Engineer, Fullstack Developer",
+  "professionalTitle": "Fullstack Developer",
   "firstSectionTitle": "Skills",
   "myPortfolio": "My Portfolio",
   "downloadCV": "Download my CV here",
@@ -158,5 +158,12 @@ export default {
   "skill": "Skill",
   "xp": "Experience",
   "v": "Version",
-  "cvFileName": "CV English"
+  "cvFileName": "CV English",
+  "test":{
+    "test":{
+      "test":{
+        "test": "Test Result"
+      }
+    }
+  }
 }

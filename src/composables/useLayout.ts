@@ -1,5 +1,5 @@
 import {computed, ComputedRef, ref} from "vue";
-import {getBreakpoint} from "./utils";
+import {getBreakpoint} from "../utils";
 
 export interface ILayout {
   menu: ComputedRef<boolean>;

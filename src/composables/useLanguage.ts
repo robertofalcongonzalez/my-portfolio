@@ -1,59 +1,57 @@
-import {computed, ComputedRef, ref} from "vue";
-import {getLanguages} from "./utils";
+import {computed, ComputedRef, Ref, ref} from "vue";
+import {reactiveAsyncImport, retrieveLang} from "../utils";
+import {useTranslator} from "./useTranslator";
 
-
-
-const langCollection = getLanguages();
 
 interface Languages {
   /**
    * Supports nested properties Ex: $t('a.b')
    * Language keys from lang file must not have "."
    */
-  $t: (key: string) => string
+  translate: (path: string) => string
 
   setLanguage(lang: string): void;
 
   lang: ComputedRef<string>
-}
-// TODO: Improve Typing
-type lang = Record<keys, Record<string, string>>;
-type keys = keyof typeof langCollection;
 
-let state = {
-  languages: ['en', 'es'],
-  current: ref('es')
 }
+
+
+const navigatorLang = navigator.language.split("-")[0];
 
 export function useLanguages(): Languages {
-  const setLanguage = (lang: string) => {
-    const html: HTMLHtmlElement = document.getElementsByName('HTML')[0] as HTMLHtmlElement;
-    html.setAttribute('lang', lang);
-    state.current.value = lang
-  };
-  let languages: lang = {} as lang
-  (Object.keys(langCollection) as keys[]).forEach((key) => {
-    state.languages.forEach((lang) => {
-      if (key === lang) {
-        languages[key] = langCollection[key]
-      }
-    })
-  })
+  const currentLang = ref(navigatorLang)
+  let messages = reactiveAsyncImport(currentLang.value) as Ref<Record<string, any>>
+  const loadedLanguages = [{lang: navigatorLang, messages}]
 
-  const $t = (key: string) => {
-    if (key && !key.includes('.')) {
-      return languages[state.current.value as keys][key]
-    }
-    const keys = key.split('.');
-    let result: any = languages[state.current.value as keys]
-    for(let i: number = 0; i< keys.length; i++){
-      result = result[keys[i]]
-    }
-    return result
+  const changeLanguage = (lang: string, msg: Ref<Record<string, any>>) => {
+    localStorage.setItem('lang', lang);
+    currentLang.value = lang;
+    messages = msg;
+    document.querySelector("html")?.setAttribute('lang', lang);
+    return lang;
   };
+
+  const setLanguage = (lang: string) => {
+    const retrievedLang = retrieveLang(lang, loadedLanguages);
+    if (!retrievedLang) {
+      throw 'Language not supported.';
+    }
+    if (currentLang.value !== lang && retrievedLang) {
+      changeLanguage(lang, ref(retrievedLang!.messages));
+      return ref(retrievedLang!.messages);
+    } else {
+      loadedLanguages.push({
+        lang, messages: messages
+      });
+      changeLanguage(lang, ref(retrievedLang!.messages));
+    }
+  }
+  const {translate} = useTranslator(messages);
+
   return {
-    $t,
+    translate,
     setLanguage,
-    lang: computed(() => state.current.value)
+    lang: computed(() => currentLang.value)
   }
 }
